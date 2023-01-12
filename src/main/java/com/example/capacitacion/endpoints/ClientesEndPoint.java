@@ -56,10 +56,35 @@ public class ClientesEndPoint {
 
     }
 
-    @GetMapping("insertarAll")
+    /*
+    GOOD
+     */
+    @PostMapping("insertarAll")
     public Map<String, Object> insertarAll(@RequestParam() Map<String, Object> datosform){
 
-        return datosform;
+        Map<String , Object> response = new HashMap<>();
+
+        // if ( var instandof String )
+        //    return "no es valido el id"
+        // try {  //intento insertar  }
+        // catch (Exeception e) return " no es valido "+e.getCause()
+
+        List<ClienteDTO> listclientes = new ArrayList<>();
+
+        ClienteDTO nuevoCliente = new ClienteDTO(
+                Integer.parseInt(
+                        Objects.equals(
+                                datosform.get("idcuenta").toString(), "") ? "00000" : datosform.get("idcuenta").toString()
+                )
+        );
+
+        listclientes.add(nuevoCliente);
+
+        response.put("code","200");
+        response.put("message", "Datos insertados correctamente");
+        response.put("values", nuevoCliente);
+
+        return response;
 
     }
 

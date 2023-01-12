@@ -1,6 +1,7 @@
 package com.example.capacitacion.model;
 
 import java.util.Date;
+import java.util.Map;
 
 public class ClienteDTO {
 
@@ -18,6 +19,10 @@ public class ClienteDTO {
 
     public ClienteDTO(Integer idcuenta){
         this.idcuenta = idcuenta;
+    }
+
+    public ClienteDTO(Map<String, Object> datosform){
+//        this.idcuenta = datosform.get("")
     }
 
     public Integer getIdcuenta() {

@@ -9,6 +9,7 @@ import java.util.Date;
 public class ClienteVO {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column

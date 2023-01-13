@@ -29,7 +29,7 @@ public class ClienteServiceImpl implements ClienteServices {
         boolean flag = false;
         try {
             ClienteVO clienteVO = new ClienteVO();
-            clienteVO.setId(1);
+            clienteVO.setId(null);
             clienteVO.setCorreo(datos.get("correo").toString());
             clienteVO.setContrasena(Utilidades.encryp(datos.get("contrasena").toString()));
             clienteVO.setFecha(new Date());

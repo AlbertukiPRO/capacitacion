@@ -6,10 +6,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "prueba")
-@NamedQueries({
-        @NamedQuery(name="ClienteVO.findAll", query = "select c from prueba c"),
-        @NamedQuery(name = "ClienteVO.findById", query ="")
-})
 public class ClienteVO {
 
     @Id
@@ -20,7 +16,7 @@ public class ClienteVO {
     @Column
     private String correo;
     @Column
-    private String cotrasena;
+    private String contrasena;
     @Column
     private Date fecha;
 
@@ -48,12 +44,12 @@ public class ClienteVO {
         this.correo = correo;
     }
 
-    public String getCotrasena() {
-        return cotrasena;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setCotrasena(String cotrasena) {
-        this.cotrasena = cotrasena;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public Date getFecha() {
@@ -70,7 +66,7 @@ public class ClienteVO {
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", corre='" + correo + '\'' +
-                ", cotrasena='" + cotrasena + '\'' +
+                ", cotrasena='" + contrasena + '\'' +
                 ", fecha=" + fecha +
                 '}';
     }

@@ -6,7 +6,6 @@ import com.example.capacitacion.repository.ClienteRepository;
 import com.example.capacitacion.services.ClienteServices;
 import com.example.capacitacion.utils.Utilidades;
 import mx.softitlan.utils.ResponseBody;
-import mx.softitlan.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,8 +29,9 @@ public class ClienteServiceImpl implements ClienteServices {
         boolean flag = false;
         try {
             ClienteVO clienteVO = new ClienteVO();
+            clienteVO.setId(1);
             clienteVO.setCorreo(datos.get("correo").toString());
-            clienteVO.setCotrasena(Utilidades.encryp(datos.get("contrasena").toString()));
+            clienteVO.setContrasena(Utilidades.encryp(datos.get("contrasena").toString()));
             clienteVO.setFecha(new Date());
             clienteVO.setNombre(datos.get("nombre").toString());
 

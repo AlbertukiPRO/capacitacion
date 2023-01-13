@@ -2,11 +2,14 @@ package com.example.capacitacion.endpoints;
 
 import com.example.capacitacion.model.ClienteDTO;
 import com.example.capacitacion.services.ClienteServices;
-import com.example.capacitacion.utils.Utilidades;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 @RequestMapping("clientes")
 @RestController()
@@ -99,17 +102,16 @@ public class ClientesEndPoint {
     @PostMapping("getClientes")
     public List<ClienteDTO> getClientes(){
 
-        Map<String, Object> response =  clienteServices.getListClients();
-
-        return (List<ClienteDTO>) response.get("values");
+//        Map<String, Object> response =  clienteServices.getListClients();
+//
+//        return (List<ClienteDTO>) response.get("values");
+        return null;
     }
 
     @PostMapping("insertCliente")
     public boolean insertar(@RequestParam() Map<String, Object> data ){
 
-        Map<String, Object> response = clienteServices.insertcliente(data);
-
-        return response.get("code").toString().equals("200");
+      return clienteServices.insertcliente(data);
 
     }
 

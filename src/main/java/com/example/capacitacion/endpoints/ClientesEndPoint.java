@@ -3,10 +3,7 @@ package com.example.capacitacion.endpoints;
 import com.example.capacitacion.model.ClienteDTO;
 import com.example.capacitacion.services.ClienteServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -115,6 +112,26 @@ public class ClientesEndPoint {
 
     }
 
+    @PostMapping("obtenerTodosClientes")
+    @CrossOrigin //permitir acceso a externos.
+    public List<ClienteDTO> getAllClients(){
+        return clienteServices.getListClients();
+    }
+
+    @PostMapping("obtenerClientePorNombre")
+    public List<ClienteDTO> getClientByName(@RequestParam() String nombre){
+        return null;
+    }
+
+    @PostMapping("modificarCliente")
+    public boolean updateClient(@RequestParam() Map<String, Object> datos){
+        return false;
+    }
+
+    @PostMapping("eliminarCliente")
+    public boolean deleteClient(@RequestParam() String id){
+        return false;
+    }
 
 
 

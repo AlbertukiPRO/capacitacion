@@ -6,6 +6,10 @@ import java.util.Date;
 
 @Entity
 @Table(name = "prueba")
+@NamedQueries({
+        @NamedQuery(name = "ClienteVO.findAll", query = "SELECT c FROM ClienteVO as c"),
+        @NamedQuery(name = "ClienteVO.findByName", query = "SELECT c FROM ClienteVO as c where c.nombre LIKE CONCAT('%',:name,'%')")
+})
 public class ClienteVO {
 
     @Id
@@ -20,9 +24,19 @@ public class ClienteVO {
     private String contrasena;
     @Column
     private Date fecha;
+    @Column(name="img")
+    private String imagen;
 
     public Integer getId() {
         return id;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public void setId(Integer id) {

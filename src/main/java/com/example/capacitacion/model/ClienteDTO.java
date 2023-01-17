@@ -7,14 +7,18 @@ public class ClienteDTO {
 
     private Integer idcuenta;
     private String correo;
+    private String nombre;
     private String contrasena;
     private Date fecharegistro;
+    private String imagen;
 
-    public ClienteDTO(Integer idcuenta, String correo, String contrasena, Date fecharegistro) {
+    public ClienteDTO(Integer idcuenta, String correo, String nombre, String contrasena, Date fecharegistro, String img) {
         this.idcuenta = idcuenta;
         this.correo = correo;
         this.contrasena = contrasena;
         this.fecharegistro = fecharegistro;
+        this.nombre = nombre;
+        this.imagen = img;
     }
 
     public ClienteDTO(Integer idcuenta){
@@ -55,6 +59,22 @@ public class ClienteDTO {
 
     public void setFecharegistro(Date fecharegistro) {
         this.fecharegistro = fecharegistro;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     @Override

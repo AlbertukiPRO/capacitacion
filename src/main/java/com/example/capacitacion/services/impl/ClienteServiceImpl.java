@@ -5,7 +5,6 @@ import com.example.capacitacion.model.ClienteVO;
 import com.example.capacitacion.repository.ClienteRepository;
 import com.example.capacitacion.services.ClienteServices;
 import com.example.capacitacion.utils.Utilidades;
-import mx.softitlan.utils.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +17,16 @@ public class ClienteServiceImpl implements ClienteServices {
     private ClienteRepository clienteRepository;
 
     @Override
-    public ResponseBody<List<ClienteDTO>> getListClients() {
+    public List<ClienteDTO> getListClients() {
 
+        List<ClienteVO> clienteVOS = clienteRepository.findAll();
+        List<ClienteDTO> clienteDTOList = new ArrayList<>();
 
-        return null;
+        clienteVOS.forEach(e->{
+            clienteDTOList.add(new ClienteDTO(e.getId(), e.getCorreo(), e.getNombre(), e.getContrasena(), e.getFecha(), e.getImagen()));
+        });
+
+        return clienteDTOList;
     }
 
     @Override
@@ -33,6 +38,7 @@ public class ClienteServiceImpl implements ClienteServices {
             clienteVO.setCorreo(datos.get("correo").toString());
             clienteVO.setContrasena(Utilidades.encryp(datos.get("contrasena").toString()));
             clienteVO.setFecha(new Date());
+            clienteVO.setImagen(datos.get("img").toString());
             clienteVO.setNombre(datos.get("nombre").toString());
 
 

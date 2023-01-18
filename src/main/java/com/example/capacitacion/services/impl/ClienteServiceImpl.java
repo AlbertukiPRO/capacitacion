@@ -45,7 +45,7 @@ public class ClienteServiceImpl implements ClienteServices {
 //            data = Utils.response200OK(flag);
 
         }catch (Exception e){
-            System.out.println(e.getCause().toString());
+            System.out.println(e.getMessage());
         }
 
         return flag;

@@ -106,8 +106,9 @@ public class ClientesEndPoint {
     }
 
     @PostMapping("/insertCliente") // 💪
+    @CrossOrigin
     public boolean insertar(@RequestParam() Map<String, Object> data ){
-
+        System.out.println(data.toString());
       return clienteServices.insertcliente(data);
 
     }
@@ -118,7 +119,7 @@ public class ClientesEndPoint {
         return clienteServices.getListClients();
     }
 
-    @PostMapping("/obtenerClientePorNombre")
+    @PostMapping("/obtenerClientePorNombre")// 💪
     public List<ClienteDTO> getClientByName(@RequestParam() String nombre){
         return clienteServices.getClientesByName(nombre);
     }
@@ -134,7 +135,5 @@ public class ClientesEndPoint {
         return clienteServices.deleteCliente(Integer.parseInt(id));
 
     }
-
-
 
 }

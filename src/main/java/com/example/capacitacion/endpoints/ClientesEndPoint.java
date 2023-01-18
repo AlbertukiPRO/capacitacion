@@ -120,7 +120,7 @@ public class ClientesEndPoint {
 
     @PostMapping("/obtenerClientePorNombre")
     public List<ClienteDTO> getClientByName(@RequestParam() String nombre){
-        return null;
+        return clienteServices.getClientesByName(nombre);
     }
 
     @PostMapping("/modificarCliente") // 💪

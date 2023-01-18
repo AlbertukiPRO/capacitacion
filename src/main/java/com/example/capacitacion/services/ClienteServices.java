@@ -11,5 +11,6 @@ public interface ClienteServices {
     boolean insertcliente(Map<String, Object> datos);
     boolean updateCliente(String id, Map<String, Object> datostoUpdate);
     boolean deleteCliente(Integer id);
+    List<ClienteDTO> getClientesByName(String nombre);
 
 }

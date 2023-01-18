@@ -5,7 +5,6 @@ import com.example.capacitacion.model.ClienteVO;
 import com.example.capacitacion.repository.ClienteRepository;
 import com.example.capacitacion.services.ClienteServices;
 import com.example.capacitacion.utils.Utilidades;
-import mx.softitlan.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +22,7 @@ public class ClienteServiceImpl implements ClienteServices {
         List<ClienteVO> clienteVOS = clienteRepository.findAll();
         List<ClienteDTO> clienteDTOList = new ArrayList<>();
 
-        clienteVOS.forEach(e->{
-            clienteDTOList.add(new ClienteDTO(e.getId(), e.getCorreo(), e.getNombre(), e.getContrasena(), e.getFecha(), e.getImagen()));
-        });
+        clienteVOS.forEach(e -> clienteDTOList.add(new ClienteDTO(e.getId(), e.getCorreo(), e.getNombre(), e.getContrasena(), e.getFecha(), e.getImagen())));
 
         return clienteDTOList;
     }
@@ -48,8 +45,7 @@ public class ClienteServiceImpl implements ClienteServices {
 //            data = Utils.response200OK(flag);
 
         }catch (Exception e){
-            System.out.println(e.getCause());
-//            data = Utils.handle(e, "No se pudo crear el cliente");
+            System.out.println(e.getCause().toString());
         }
 
         return flag;
@@ -87,12 +83,25 @@ public class ClienteServiceImpl implements ClienteServices {
         return flag;
     }
 
+    @Override
+    public List<ClienteDTO> getClientesByName(String nombre) {
+
+        List<ClienteDTO> clienteDTOList = new ArrayList<>();
+        List<ClienteVO> clienteVOList = clienteRepository.findByName(nombre);
+
+        clienteVOList.forEach(e -> {
+            clienteDTOList.add(new ClienteDTO(e.getId(), e.getCorreo(), e.getNombre(), e.getContrasena(), e.getFecha(), e.getImagen()));
+        });
+
+        return clienteDTOList;
+    }
+
     //1-> endpoint
     //2-> implementacion de los metodos
     //2.1 -> interface
     //2.2 -> implementación
-    //3 -> interface repo
-    //3.1 -> implementacion repo.
+    //3 -> interfaz repo
+    //3.1 ≥ implementacion repo.
 
 //    private List<ClienteDTO> listcliente;
 //

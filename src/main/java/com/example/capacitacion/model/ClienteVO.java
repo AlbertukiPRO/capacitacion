@@ -8,7 +8,7 @@ import java.util.Date;
 @Table(name = "prueba")
 @NamedQueries({
         @NamedQuery(name = "ClienteVO.findAll", query = "SELECT c FROM ClienteVO as c"),
-        @NamedQuery(name = "ClienteVO.findByName", query = "SELECT c FROM ClienteVO as c where c.nombre LIKE CONCAT('%',:name,'%')")
+        @NamedQuery(name = "ClienteVO.findByName", query = "SELECT c FROM ClienteVO as c WHERE c.nombre LIKE CONCAT('%',:name,'%')")
 })
 public class ClienteVO {
 

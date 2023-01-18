@@ -9,5 +9,7 @@ public interface ClienteServices {
 
     List<ClienteDTO> getListClients();
     boolean insertcliente(Map<String, Object> datos);
+    boolean updateCliente(String id, Map<String, Object> datostoUpdate);
+    boolean deleteCliente(Integer id);
 
 }

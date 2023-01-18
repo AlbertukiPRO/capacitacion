@@ -5,6 +5,7 @@ import com.example.capacitacion.model.ClienteVO;
 import com.example.capacitacion.repository.ClienteRepository;
 import com.example.capacitacion.services.ClienteServices;
 import com.example.capacitacion.utils.Utilidades;
+import mx.softitlan.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,38 @@ public class ClienteServiceImpl implements ClienteServices {
 //            data = Utils.handle(e, "No se pudo crear el cliente");
         }
 
+        return flag;
+    }
+
+    @Override
+    public boolean updateCliente(String id, Map<String, Object> datostoUpdate) {
+        boolean flag = false;
+
+        try {
+            Optional<ClienteVO> clienteVO = clienteRepository.findById(Integer.parseInt(id));
+
+            if ( clienteVO.isPresent() ){
+                clienteVO.get().setCorreo( datostoUpdate.get("correo").toString() );
+                clienteRepository.save(clienteVO.get());
+                flag = true;
+            }else throw new Exception();
+
+        }catch (Exception e){
+            System.out.println(e.getCause() + e.getMessage());
+        }
+
+        return flag;
+    }
+
+    @Override
+    public boolean deleteCliente(Integer id) {
+        boolean flag = false;
+        try {
+            clienteRepository.deleteById(id);
+            flag = true;
+        }catch (Exception e){
+            System.out.println(e.getCause() + e.getMessage());
+        }
         return flag;
     }
 

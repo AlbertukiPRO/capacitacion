@@ -96,7 +96,7 @@ public class ClientesEndPoint {
     /* ------------- USO DE SERVICES ----------- */
 
 
-    @PostMapping("getClientes")
+    @PostMapping("/getClientes")
     public List<ClienteDTO> getClientes(){
 
 //        Map<String, Object> response =  clienteServices.getListClients();
@@ -105,32 +105,34 @@ public class ClientesEndPoint {
         return null;
     }
 
-    @PostMapping("insertCliente")
+    @PostMapping("/insertCliente") // 💪
     public boolean insertar(@RequestParam() Map<String, Object> data ){
 
       return clienteServices.insertcliente(data);
 
     }
 
-    @PostMapping("obtenerTodosClientes")
+    @PostMapping("/obtenerTodosClientes") //  💪
     @CrossOrigin //permitir acceso a externos.
     public List<ClienteDTO> getAllClients(){
         return clienteServices.getListClients();
     }
 
-    @PostMapping("obtenerClientePorNombre")
+    @PostMapping("/obtenerClientePorNombre")
     public List<ClienteDTO> getClientByName(@RequestParam() String nombre){
         return null;
     }
 
-    @PostMapping("modificarCliente")
+    @PostMapping("/modificarCliente") // 💪
     public boolean updateClient(@RequestParam() Map<String, Object> datos){
-        return false;
+        return clienteServices.updateCliente(datos.get("id").toString(), datos);
     }
 
-    @PostMapping("eliminarCliente")
+    @PostMapping("/eliminarCliente") // 💪
     public boolean deleteClient(@RequestParam() String id){
-        return false;
+
+        return clienteServices.deleteCliente(Integer.parseInt(id));
+
     }
 
 

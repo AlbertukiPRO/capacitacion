@@ -1,6 +1,7 @@
 package com.example.capacitacion.endpoints;
 
 import com.example.capacitacion.model.ClienteDTO;
+import com.example.capacitacion.security.Encabezados;
 import com.example.capacitacion.services.ClienteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -120,6 +121,7 @@ public class ClientesEndPoint {
     }
 
     @PostMapping("/obtenerClientePorNombre")// 💪
+    @CrossOrigin
     public List<ClienteDTO> getClientByName(@RequestParam() String nombre){
         return clienteServices.getClientesByName(nombre);
     }
